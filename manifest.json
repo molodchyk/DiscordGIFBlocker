@@ -1,0 +1,21 @@
+{
+  "manifest_version": 3,
+  "name": "Discord GIF Blocker",
+  "version": "1.1",
+  "description": "Blocks GIF images in Discord messages to reduce distractions.",
+  "permissions": ["activeTab", "declarativeContent", "storage"],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["*://discord.com/*"],
+      "js": ["content.js"]
+    }
+  ],
+  "icons": {
+    "16": "icon-16.png",
+    "48": "icon-64.png",
+    "128": "icon-128.png"
+  }
+}
