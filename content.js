@@ -9,6 +9,7 @@
     'div[class*="imageContent"] video[src*=".mp4"]'
   ].join(', ');
   const HIDDEN_ATTRIBUTE = 'data-discord-gif-blocker-hidden';
+  const DEBUG_ATTRIBUTE = 'data-discord-gif-blocker-debug';
   const DEBUG_STORAGE_KEY = 'discordGifBlockerDebug';
   let isScanScheduled = false;
 
@@ -32,11 +33,19 @@
   }
 
   function logBlockedGif() {
-    if (localStorage.getItem(DEBUG_STORAGE_KEY) !== 'true') {
+    if (!isDebugEnabled()) {
       return;
     }
 
     console.info('[Discord GIF Blocker] Hidden GIF media.');
+  }
+
+  function isDebugEnabled() {
+    if (document.documentElement.getAttribute(DEBUG_ATTRIBUTE) === 'true') {
+      return true;
+    }
+
+    return globalThis.localStorage?.getItem(DEBUG_STORAGE_KEY) === 'true';
   }
 
   function scheduleGifScan() {
