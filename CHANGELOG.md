@@ -18,7 +18,7 @@ All notable changes to this project will be documented in this file.
 
 - Updated `manifest.json` to use Chrome extension internationalization keys.
 - Improved `content.js` by isolating its scope, coalescing mutation handling, and making GIF hiding idempotent.
-- Added opt-in debug console logging, a loaded marker, and a manual scan event for testing GIF blocking.
+- Added a console log when GIF media is hidden.
 - Expanded README into a complete GitHub project page.
 
 ### Removed
