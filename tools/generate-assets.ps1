@@ -143,8 +143,11 @@ function Draw-DiscordPanel($g, $x, $y, $w, $h) {
     $rowCount = 2
   }
 
+  $rowGap = 52
+  $firstRowY = $y + (($h - (($rowCount - 1) * $rowGap)) / 2) - 11
+
   for ($i = 0; $i -lt $rowCount; $i++) {
-    $rowY = $y + 44 + ($i * 52)
+    $rowY = $firstRowY + ($i * $rowGap)
     $g.FillEllipse($textBrush, $x + 120, $rowY, 22, 22)
     $barX = $x + 158
     $barWidth = [Math]::Max(28, [Math]::Min(($w * 0.42), ($x + $w - $barX - 22)))
