@@ -58,6 +58,12 @@ Promotional images:
 - [Small promo, 440x280](assets/store/cws-small-promo-440x280.png)
 - [Marquee promo, 1400x560](assets/store/cws-marquee-promo-1400x560.png)
 
+Screenshots:
+
+- [GIFs visible in chat](assets/store/screenshots/01-gifs-visible.png)
+- [GIFs hidden automatically](assets/store/screenshots/02-gifs-hidden.png)
+- [Privacy and minimal permissions](assets/store/screenshots/03-privacy.png)
+
 Store review documentation:
 
 - [Store justifications](STORE_JUSTIFICATIONS.md)
