@@ -142,7 +142,7 @@ function Draw-BeforeScreenshot() {
   $ctx = New-Bitmap 1280 720
   Draw-DiscordMock $ctx.Graphics $false
   Draw-Caption $ctx.Graphics "GIFs visible in chat" "Animated media can take over the conversation."
-  Save-Png $ctx.Bitmap "assets/store/screenshots/01-gifs-visible.png"
+  Save-Png $ctx.Bitmap "assets/store/screenshots/02-gifs-visible.png"
   $ctx.Graphics.Dispose()
   $ctx.Bitmap.Dispose()
 }
@@ -151,7 +151,7 @@ function Draw-AfterScreenshot() {
   $ctx = New-Bitmap 1280 720
   Draw-DiscordMock $ctx.Graphics $true
   Draw-Caption $ctx.Graphics "GIFs hidden automatically" "The chat stays calmer without extra setup."
-  Save-Png $ctx.Bitmap "assets/store/screenshots/02-gifs-hidden.png"
+  Save-Png $ctx.Bitmap "assets/store/screenshots/01-gifs-hidden.png"
   $ctx.Graphics.Dispose()
   $ctx.Bitmap.Dispose()
 }

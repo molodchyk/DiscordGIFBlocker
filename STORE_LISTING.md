@@ -60,8 +60,8 @@ Promotional images:
 
 Screenshots:
 
-- [GIFs visible in chat](assets/store/screenshots/01-gifs-visible.png)
-- [GIFs hidden automatically](assets/store/screenshots/02-gifs-hidden.png)
+- [GIFs hidden automatically](assets/store/screenshots/01-gifs-hidden.png)
+- [GIFs visible in chat](assets/store/screenshots/02-gifs-visible.png)
 - [Privacy and minimal permissions](assets/store/screenshots/03-privacy.png)
 
 Store review documentation:
