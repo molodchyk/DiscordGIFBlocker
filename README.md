@@ -75,6 +75,12 @@ Regenerate sanitized Chrome Web Store screenshots:
 powershell -NoProfile -ExecutionPolicy Bypass -File tools\generate-store-screenshots.ps1
 ```
 
+Create a Chrome Web Store upload package:
+
+```powershell
+powershell -NoProfile -ExecutionPolicy Bypass -File tools\package.ps1
+```
+
 ## Localization
 
 The extension supports 50 locales through Chrome's `_locales` directory.

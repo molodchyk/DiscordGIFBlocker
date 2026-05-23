@@ -58,6 +58,10 @@ Promotional images:
 - [Small promo, 440x280](assets/store/cws-small-promo-440x280.png)
 - [Marquee promo, 1400x560](assets/store/cws-marquee-promo-1400x560.png)
 
+Upload package:
+
+- `dist/discord-gif-blocker-1.1.0.zip`
+
 Screenshots, 1280x800 24-bit PNG:
 
 - [GIFs hidden automatically](assets/store/screenshots/01-gifs-hidden.png)

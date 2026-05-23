@@ -11,6 +11,7 @@ All notable changes to this project will be documented in this file.
 - Added Chrome Web Store listing descriptions for 50 locales.
 - Added reproducible generated icons and Chrome Web Store promotional images.
 - Added sanitized Chrome Web Store screenshots.
+- Added automatic Chrome Web Store ZIP packaging.
 - Added Chrome Web Store justification and privacy policy documentation.
 - Added Chrome Web Store listing index.
 - Added `LICENSE.txt`.
