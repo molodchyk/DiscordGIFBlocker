@@ -1,12 +1,9 @@
 {
   "manifest_version": 3,
-  "name": "Discord GIF Blocker",
-  "version": "1.1",
-  "description": "Blocks GIF images in Discord messages to reduce distractions.",
-  "permissions": ["activeTab", "declarativeContent", "storage"],
-  "background": {
-    "service_worker": "background.js"
-  },
+  "name": "__MSG_extensionName__",
+  "version": "1.1.0",
+  "description": "__MSG_extensionDescription__",
+  "default_locale": "en",
   "content_scripts": [
     {
       "matches": ["*://discord.com/*"],
@@ -14,8 +11,10 @@
     }
   ],
   "icons": {
-    "16": "icon-16.png",
-    "48": "icon-64.png",
-    "128": "icon-128.png"
+    "16": "assets/icons/icon-16.png",
+    "32": "assets/icons/icon-32.png",
+    "48": "assets/icons/icon-48.png",
+    "64": "assets/icons/icon-64.png",
+    "128": "assets/icons/icon-128.png"
   }
 }

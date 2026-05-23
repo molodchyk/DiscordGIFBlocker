@@ -1,44 +1,52 @@
-// Function to hide Discord GIFs
-function hideDiscordGifs() {
-  console.log("hideDiscordGifs called"); // Log when the function is called
+// SPDX-License-Identifier: GPL-3.0-only
+// Copyright (C) 2024-2026 Oleksandr Molodchyk
 
-  // Target both img and video elements within the imageContent container
-  const gifElements = document.querySelectorAll('div[class*="imageContent"] img[src*=".gif"], div[class*="imageContent"] video[src*=".mp4"]');
+(() => {
+  'use strict';
 
-  gifElements.forEach((element) => {
-    // Find the closest ancestor that matches the general pattern of 'imageContent'
-    const gifContainer = element.closest('div[class*="imageContent"]');
-    if (gifContainer) {
-      console.log("Hiding a GIF element", element); // Log when a GIF is being hidden
-      hideElement(gifContainer);
-    }
-  });
-}
+  const GIF_MEDIA_SELECTOR = [
+    'div[class*="imageContent"] img[src*=".gif"]',
+    'div[class*="imageContent"] video[src*=".mp4"]'
+  ].join(', ');
+  const HIDDEN_ATTRIBUTE = 'data-discord-gif-blocker-hidden';
+  let isScanScheduled = false;
 
-// Function to hide the specified element
-function hideElement(element) {
-  console.log("hideElement called for", element); // Log the element being hidden
-  element.style.display = 'none';
-}
-
-// MutationObserver callback
-const observerCallback = (mutationsList, observer) => {
-  for (const mutation of mutationsList) {
-    console.log("Mutation observed", mutation); // Log the mutation observed
-    if (mutation.type === 'childList' || mutation.type === 'subtree') {
-      hideDiscordGifs();
-    }
+  function hideDiscordGifs() {
+    document.querySelectorAll(GIF_MEDIA_SELECTOR).forEach((element) => {
+      const gifContainer = element.closest('div[class*="imageContent"]');
+      if (gifContainer) {
+        hideElement(gifContainer);
+      }
+    });
   }
-};
 
-// Create a more aggressive observer configuration
-const observerOptions = {
-  childList: true,
-  subtree: true,
-  attributes: false,
-  characterData: false
-};
+  function hideElement(element) {
+    if (element.hasAttribute(HIDDEN_ATTRIBUTE)) {
+      return;
+    }
 
-// Instantiate and start the MutationObserver
-const observer = new MutationObserver(observerCallback);
-observer.observe(document.body, observerOptions);
+    element.setAttribute(HIDDEN_ATTRIBUTE, 'true');
+    element.style.setProperty('display', 'none', 'important');
+  }
+
+  function scheduleGifScan() {
+    if (isScanScheduled) {
+      return;
+    }
+
+    isScanScheduled = true;
+    requestAnimationFrame(() => {
+      isScanScheduled = false;
+      hideDiscordGifs();
+    });
+  }
+
+  const observer = new MutationObserver(scheduleGifScan);
+
+  observer.observe(document.body || document.documentElement, {
+    childList: true,
+    subtree: true
+  });
+
+  hideDiscordGifs();
+})();

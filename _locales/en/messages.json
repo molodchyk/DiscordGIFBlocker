@@ -1,0 +1,10 @@
+{
+  "extensionName": {
+    "message": "Discord GIF Blocker",
+    "description": "Extension name shown in the browser and Chrome Web Store."
+  },
+  "extensionDescription": {
+    "message": "Blocks animated GIFs on Discord to reduce distractions.",
+    "description": "Short extension description shown in the browser and Chrome Web Store."
+  }
+}
