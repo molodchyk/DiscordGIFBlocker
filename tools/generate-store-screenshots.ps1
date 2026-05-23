@@ -1,7 +1,7 @@
 Add-Type -AssemblyName System.Drawing
 
 function New-Bitmap($width, $height) {
-  $bitmap = New-Object System.Drawing.Bitmap($width, $height, [System.Drawing.Imaging.PixelFormat]::Format32bppArgb)
+  $bitmap = New-Object System.Drawing.Bitmap($width, $height, [System.Drawing.Imaging.PixelFormat]::Format24bppRgb)
   $graphics = [System.Drawing.Graphics]::FromImage($bitmap)
   $graphics.SmoothingMode = [System.Drawing.Drawing2D.SmoothingMode]::AntiAlias
   $graphics.TextRenderingHint = [System.Drawing.Text.TextRenderingHint]::ClearTypeGridFit
@@ -100,9 +100,9 @@ function Draw-GifCard($g, $x, $y, $blocked) {
 function Draw-DiscordMock($g, $blocked) {
   $g.Clear([System.Drawing.Color]::FromArgb(255, 18, 19, 24))
 
-  Fill-RoundedRect $g 0 0 1280 720 0 ([System.Drawing.Color]::FromArgb(255, 18, 19, 24))
-  Fill-RoundedRect $g 0 0 68 720 0 ([System.Drawing.Color]::FromArgb(255, 14, 15, 20))
-  Fill-RoundedRect $g 68 0 250 720 0 ([System.Drawing.Color]::FromArgb(255, 31, 33, 42))
+  Fill-RoundedRect $g 0 0 1280 800 0 ([System.Drawing.Color]::FromArgb(255, 18, 19, 24))
+  Fill-RoundedRect $g 0 0 68 800 0 ([System.Drawing.Color]::FromArgb(255, 14, 15, 20))
+  Fill-RoundedRect $g 68 0 250 800 0 ([System.Drawing.Color]::FromArgb(255, 31, 33, 42))
   Fill-RoundedRect $g 318 0 962 58 0 ([System.Drawing.Color]::FromArgb(255, 28, 30, 38))
 
   for ($i = 0; $i -lt 5; $i++) {
@@ -133,13 +133,13 @@ function Draw-DiscordMock($g, $blocked) {
 }
 
 function Draw-Caption($g, $title, $subtitle) {
-  Fill-RoundedRect $g 52 586 520 84 18 ([System.Drawing.Color]::FromArgb(235, 12, 14, 20))
-  Draw-Text $g $title 78 600 31 ([System.Drawing.Color]::FromArgb(255, 255, 255, 255)) ([System.Drawing.FontStyle]::Bold)
-  Draw-Text $g $subtitle 80 639 20 ([System.Drawing.Color]::FromArgb(255, 203, 209, 224)) ([System.Drawing.FontStyle]::Regular)
+  Fill-RoundedRect $g 52 624 520 92 18 ([System.Drawing.Color]::FromArgb(255, 12, 14, 20))
+  Draw-Text $g $title 78 642 31 ([System.Drawing.Color]::FromArgb(255, 255, 255, 255)) ([System.Drawing.FontStyle]::Bold)
+  Draw-Text $g $subtitle 80 682 20 ([System.Drawing.Color]::FromArgb(255, 203, 209, 224)) ([System.Drawing.FontStyle]::Regular)
 }
 
 function Draw-BeforeScreenshot() {
-  $ctx = New-Bitmap 1280 720
+  $ctx = New-Bitmap 1280 800
   Draw-DiscordMock $ctx.Graphics $false
   Draw-Caption $ctx.Graphics "GIFs visible in chat" "Animated media can take over the conversation."
   Save-Png $ctx.Bitmap "assets/store/screenshots/02-gifs-visible.png"
@@ -148,7 +148,7 @@ function Draw-BeforeScreenshot() {
 }
 
 function Draw-AfterScreenshot() {
-  $ctx = New-Bitmap 1280 720
+  $ctx = New-Bitmap 1280 800
   Draw-DiscordMock $ctx.Graphics $true
   Draw-Caption $ctx.Graphics "GIFs hidden automatically" "The chat stays calmer without extra setup."
   Save-Png $ctx.Bitmap "assets/store/screenshots/01-gifs-hidden.png"
@@ -157,7 +157,7 @@ function Draw-AfterScreenshot() {
 }
 
 function Draw-PrivacyScreenshot() {
-  $ctx = New-Bitmap 1280 720
+  $ctx = New-Bitmap 1280 800
   $g = $ctx.Graphics
   $g.Clear([System.Drawing.Color]::FromArgb(255, 17, 20, 31))
 
