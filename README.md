@@ -71,7 +71,7 @@ powershell -NoProfile -ExecutionPolicy Bypass -File tools\generate-assets.ps1
 
 ## Localization
 
-The extension supports English, Ukrainian, German, Spanish, and French through Chrome's `_locales` directory.
+The extension supports 50 locales through Chrome's `_locales` directory.
 
 Chrome Web Store listing copy is maintained separately in `store-listing/`, with [STORE_LISTING.md](STORE_LISTING.md) as the index.
 

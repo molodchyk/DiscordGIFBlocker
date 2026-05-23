@@ -7,8 +7,8 @@ All notable changes to this project will be documented in this file.
 ### Added
 
 - Added GPL-3.0-only SPDX and copyright headers to the content script.
-- Added localized extension metadata for English, Ukrainian, German, Spanish, and French.
-- Added Chrome Web Store listing descriptions for English, Ukrainian, German, Spanish, and French.
+- Added localized extension metadata for 50 locales.
+- Added Chrome Web Store listing descriptions for 50 locales.
 - Added reproducible generated icons and Chrome Web Store promotional images.
 - Added Chrome Web Store justification and privacy policy documentation.
 - Added Chrome Web Store listing index.

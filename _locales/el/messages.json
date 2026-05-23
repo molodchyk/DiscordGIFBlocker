@@ -1,0 +1,8 @@
+{
+  "extensionName": {
+    "message": "Discord GIF Blocker"
+  },
+  "extensionDescription": {
+    "message": "Αποκλείει τα κινούμενα GIF στο Discord για να μειώνει τους περισπασμούς."
+  }
+}
