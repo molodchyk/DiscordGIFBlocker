@@ -10,34 +10,42 @@
   ].join(', ');
   const HIDDEN_ATTRIBUTE = 'data-discord-gif-blocker-hidden';
   const DEBUG_ATTRIBUTE = 'data-discord-gif-blocker-debug';
+  const LOADED_ATTRIBUTE = 'data-discord-gif-blocker-loaded';
   const DEBUG_STORAGE_KEY = 'discordGifBlockerDebug';
+  const SCAN_EVENT = 'discordGifBlockerScan';
   let isScanScheduled = false;
 
   function hideDiscordGifs() {
-    document.querySelectorAll(GIF_MEDIA_SELECTOR).forEach((element) => {
+    let hiddenCount = 0;
+    const gifElements = document.querySelectorAll(GIF_MEDIA_SELECTOR);
+
+    gifElements.forEach((element) => {
       const gifContainer = element.closest('div[class*="imageContent"]');
-      if (gifContainer) {
-        hideElement(gifContainer);
+      if (gifContainer && hideElement(gifContainer)) {
+        hiddenCount += 1;
       }
     });
+
+    logDebug(`Scan complete. Found ${gifElements.length} GIF media element(s), hidden ${hiddenCount}.`);
   }
 
   function hideElement(element) {
     if (element.hasAttribute(HIDDEN_ATTRIBUTE)) {
-      return;
+      return false;
     }
 
     element.setAttribute(HIDDEN_ATTRIBUTE, 'true');
     element.style.setProperty('display', 'none', 'important');
-    logBlockedGif();
+    logDebug('Hidden GIF media.');
+    return true;
   }
 
-  function logBlockedGif() {
+  function logDebug(message) {
     if (!isDebugEnabled()) {
       return;
     }
 
-    console.info('[Discord GIF Blocker] Hidden GIF media.');
+    console.info(`[Discord GIF Blocker] ${message}`);
   }
 
   function isDebugEnabled() {
@@ -66,6 +74,9 @@
     childList: true,
     subtree: true
   });
+
+  document.documentElement.setAttribute(LOADED_ATTRIBUTE, 'true');
+  document.addEventListener(SCAN_EVENT, hideDiscordGifs);
 
   hideDiscordGifs();
 })();
