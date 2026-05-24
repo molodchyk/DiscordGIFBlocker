@@ -1,5 +1,5 @@
 // SPDX-License-Identifier: GPL-3.0-only
-// Copyright (C) 2024-2026 Oleksandr Molodchyk
+// Copyright (C) 2023-2026 Oleksandr Molodchyk
 
 (() => {
   'use strict';
